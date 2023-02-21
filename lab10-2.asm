@@ -1,0 +1,23 @@
+SECTION .data
+msg1: db "Hello, ",0x0
+msg1Len: egu $ - msg1
+msg2: db "World!",0xa
+msg2Len: egu $ -mgs2
+
+SECTION .text
+global _start:
+
+_start:
+mov eax, 4
+mov ebx, 1
+Mov ecs, msg1
+mov edx, mgs1Len
+Int 0x80
+mov eax, 4
+mov ebx, 1
+Mov ecs, msg2
+mov edx, mgs2Len
+Int 0x80
+mov eax, 1
+mov ebx, 0
+int 0x80
