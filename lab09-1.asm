@@ -1,0 +1,28 @@
+% include ‘in out.asm’
+SECTION .data 
+msgl db 'Введите N: ',Oh
+SECTION .bss 
+N: resb 10 
+SECTION .text 
+global _start 
+_start: 
+; ——-- Вывод сообщения ‘ Введите N: ‘ 
+mov eax, msg1  
+call sprint 
+; ——-- Ввод 'N'  
+mov ecx, N  
+mov edx, 10 
+call sread 
+; ----- Преобразование 'N' из символа в число  
+mov eax, N  
+call atoi  
+mov [N],eax 
+; ——— Организация цикла 
+mov ecx, [N] ; Счетчик цикла, 'ecx=N' 
+label: 
+mov [N],ecx  
+mov eax, [N] 
+call iprintLF ; Вывод значения 'N'  
+loop label ; "ecx=ecx-1' и если 'есх° не "0' 
+; переход на "label' 
+call quit
