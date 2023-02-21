@@ -1,0 +1,19 @@
+   mov edx' [A]
+   cmp ebx, edx
+   jb first
+   jmp second
+
+finish:
+   mov eax,[A]
+   mov ebx,3
+   mul ebx
+   add eax,1
+   call iprint
+   Call quit
+Second:
+   mov eax,[X]
+   mov ebx,3
+   mul ebx
+   add eax,1
+   call iprint
+   Call quit
