@@ -1,0 +1,31 @@
+%include 'in out.asm' 
+SECTION . data 
+msg: DB "Введите х: ', 0 
+result: DB '2x+7=', 0 
+
+SECTION .bss 
+x: RESB 80 
+rez: RESB 80
+ 
+SECTION .text 
+GLOBAL _start  
+_start: 
+mov eax, msg 
+call sprint  
+mov ecx, X 
+mov edx, 80 
+call sread 
+mov eax, x  
+call atoi 
+call _calcul ; Вызов подпрограммы _calcul 
+mov eax, result  
+call sprint  
+mov eax, [rez]  
+call iprintLF  
+call quit  
+_calcul: 
+mov ebx, 2  
+mul ebx  
+add eax, 7  
+mov [rez], eax  
+ret ; выход из подпрограммы
